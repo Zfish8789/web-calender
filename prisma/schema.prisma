@@ -1,0 +1,29 @@
+generator client {
+  provider   = "prisma-client-js"
+  engineType = "library"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = "mysql://root:rootPassword@localhost:3306/mydb"
+}
+
+model gone {
+  idGone        Int      @default(autoincrement())
+  StartDate     DateTime @db.Date
+  EndDate       DateTime @db.Date
+  Reason        String?  @db.LongText
+  Colour        String?  @db.VarChar(9)
+
+  Name          String  @db.VarChar(45)
+  users         users    @relation(fields: [Name], references: [Name], onDelete: NoAction, onUpdate: NoAction, map: "fk_Gone_Users")
+
+  @@id([idGone, Name])
+  @@index([Name], map: "fk_Gone_Users_idx")
+}
+
+model users {
+  Name     String @id @db.VarChar(45)
+  Password String? @db.VarChar(45)
+  gone     gone[]
+}

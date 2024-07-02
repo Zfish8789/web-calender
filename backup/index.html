@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<head>
+  <title>Fire Blanket Web Calender: 1.0</title>
+  <link rel="stylesheet" href="Stylesheet.css">
+</head>
+
+<body>
+  <div class="overbar">
+    <h1>July</h1>
+  </div>
+  <div class="box" id="wrapper">
+    <!--<div class="week">-->
+    <div class="header">Monday</div>
+    <div class="header">Tuesday</div>
+    <div class="header">Wednesday</div>
+    <div class="header">Thursday</div>
+    <div class="header">Friday</div>
+    <div class="header">Saturday</div>
+    <div class="header">Sunday</div>
+    <!--</div>
+  <div id="days">
+  </div>-->
+  </div>
+  <form class="box" id="request" action="backend" target="_self">
+    <div class="grid">
+      <!-- <label class="label" for="fname">Name</label>
+      <label class="label" for="password">Password</label>
+      <input class="login" type="username" id="fname">
+      <input class="login" type="password" id="password"> -->
+      <label class="label" for="startdate">Start Date</label>
+      <label class="label" for="enddate">End Date</label>
+      <input class="number" type="number" onchange="button(1)" id="startdate" min=1 max=31 value=1>
+      <input class="number" type="number" onchange="button(2)" id="enddate" min=1 max=31 value=1>
+      <label class="label" for="reason">Reason (Optional)</label>
+    </div>
+		<div class="fill">
+    <textarea class="reason" id="reason"></textarea>
+		</div>
+    <input type="submit" value="Submit">
+  </form>
+  <script src="functions.js"></script> 
+</body>

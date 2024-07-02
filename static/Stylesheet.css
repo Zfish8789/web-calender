@@ -1,0 +1,77 @@
+:root {
+  --background: rgb(253, 213, 200);
+  --background2: rgb(215, 180, 180);
+  --over: rgb(92, 63, 90);
+  --day: rgb(250, 242, 232);
+  --nonday: rgb(210, 202, 192);
+  --weekday: rgb(144, 145, 137);
+  --taken: rgb(94, 225, 241);
+  --marked: rgb(244, 44, 4);
+}
+
+body {
+  padding: 20px;
+  font-family: Tahoma, Verdana, sans-serif;
+  background-color: var(--background);
+}
+
+.box {
+  background-color: var(--background2);
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.grid{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.fill{
+	display: grid;
+}
+
+.overbar {
+  background-color: var(--over);
+  overflow: hidden;
+  border-radius: 10px;
+  padding-left: 20px;
+  margin-bottom: 5px;
+}
+
+.marked {
+  background-color: var(--marked);
+}
+
+#wrapper {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(20px, 1fr));
+  grid-gap: 2px;
+  row-gap: 5px;
+}
+
+.dayBox{
+  display: grid;
+}
+
+.header {
+  background-color: var(--weekday);
+  color: #000;
+  border-radius: 3px;
+  padding: 20px;
+  font-size: 14px;
+}
+
+.day {
+  background-color: var(--day);
+  border-color: #ddd;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 10px;
+  padding: 20px;
+  font-size: 14px;
+}
+
+.nonday {
+  background-color: var(--nonday);
+}
