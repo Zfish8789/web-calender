@@ -4,15 +4,15 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
-  url      = "mysql://root:rootPassword@localhost:3306/mydb"
+  provider = "postgresql"
+  url      = "postgresql://web_calender_database_user:RWado4VY7azN5sIx5gf8XCyoqhvy90aU@dpg-cq26fijv2p9s73enhjeg-a/web_calender_database"
 }
 
 model gone {
   idGone        Int      @default(autoincrement())
   StartDate     DateTime @db.Date
   EndDate       DateTime @db.Date
-  Reason        String?  @db.LongText
+  Reason        String?  @db.Text
   Colour        String?  @db.VarChar(9)
 
   Name          String  @db.VarChar(45)
