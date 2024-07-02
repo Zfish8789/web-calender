@@ -1,7 +1,7 @@
 {
   "name": "calender",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "node server.js"
   },
   "devDependencies": {
     "prisma": "^5.16.1"
