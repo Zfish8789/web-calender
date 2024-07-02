@@ -39,10 +39,6 @@ body {
   margin-bottom: 5px;
 }
 
-.marked {
-  background-color: var(--marked);
-}
-
 #wrapper {
   display: grid;
   grid-template-columns: repeat(7, minmax(20px, 1fr));
@@ -74,4 +70,8 @@ body {
 
 .nonday {
   background-color: var(--nonday);
+}
+
+.marked {
+  background-color: var(--marked);
 }

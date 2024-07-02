@@ -19,7 +19,7 @@ app.get("/", async (req, res) =>{
 app.post("/submit", async (req, res) =>{
     console.log(req.body)
     prisma.$connect
-    
+
     const startDate = new Date()
     startDate.setFullYear(2024, 7, req.body.startdate);
 
@@ -62,4 +62,4 @@ app.get("/api/gone", async (req, res) =>{
     res.json(gones)
 })
 
-app.listen(3000, () => console.log("vist http://localhost:3000"))
+app.listen(3000, () => console.log("Website Online"))
