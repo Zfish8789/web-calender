@@ -22,7 +22,6 @@ app.post("/submit", async (req, res) =>{
 
     const startDate = new Date()
     startDate.setFullYear(2024, 7, req.body.startdate);
-
     const endDate = new Date()
     endDate.setFullYear(2024, 7, req.body.enddate);
 

@@ -68,6 +68,10 @@ body {
   font-size: 14px;
 }
 
+.hidden {
+  display: none;
+}
+
 .nonday {
   background-color: var(--nonday);
 }

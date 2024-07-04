@@ -17,22 +17,34 @@
     <div class="header">Saturday</div>
     <div class="header">Sunday</div>
   </div>
-  <form class="box" id="request" action="submit" method="post">
-    <div class="grid">
-      <label class="label" for="fname" autocomplete="on">Name</label>
-      <label class="label" for="password">Colour</label>
-      <input class="login" name="name" type="username" id="fname">
-      <input class="login" name="colour" type="color" id="password" value="#f80">
-      <label class="label" for="startdate">Start Date</label>
-      <label class="label" for="enddate">End Date</label>
-      <input class="number" name="startdate" type="number" onchange="button(1)" id="startdate" min=1 max=31 value=1>
-      <input class="number" name="enddate" type="number" onchange="button(2)" id="enddate" min=1 max=31 value=1>
-      <label class="label" for="reason">Reason (Optional)</label>
+  <div class="box">
+    <form id="request" action="submit" method="post">
+      <div class="grid">
+        <label class="label" for="fname" autocomplete="on">Name</label>
+        <label class="label" for="password">Colour</label>
+        <input class="login" name="name" type="username" id="fname">
+        <input class="login" name="colour" type="color" id="password" value="#f80">
+        <label class="label" for="startdate">Start Date</label>
+        <label class="label" for="enddate">End Date</label>
+        <input class="number" name="startdate" type="number" onchange="button(1)" id="startdate" min=1 max=31 value=1>
+        <input class="number" name="enddate" type="number" onchange="button(2)" id="enddate" min=1 max=31 value=1>
+        <label class="label" for="reason">Reason (Optional)</label>
+      </div>
+      <div class="fill">
+        <textarea class="reason" name="reason" id="reason"></textarea>
+      </div>
+      <input type="submit" value="Submit">
+    </form>
+    <div id="Display" class="grid hidden">
+      <h3>Name: </h3>
+      <p id="Name">Text Here</p>
+      <h3>Start Date:</h3>
+      <p id="Start-Date">Text Here</p>
+      <h3>End Date:</h3>
+      <p id="End-Date">Text Here</p>
+      <h3>Reason:</h3>
+      <p id="Reason">Text Here</p>
     </div>
-    <div class="fill">
-      <textarea class="reason" name="reason" id="reason"></textarea>
-    </div>
-    <input type="submit" value="Submit">
-  </form>
-  <script src="functions.js"></script> 
+  </div>
+  <script src="functions.js"></script>
 </body>

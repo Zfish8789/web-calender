@@ -11,6 +11,9 @@ function open() {
 }
 
 function submit(date) {
+  console.log("Pressedv2")
+  document.getElementById("Display").classList.add("hidden")
+  document.getElementById("request").classList.remove("hidden")
   document.getElementById("startdate").value = date
   document.getElementById("enddate").value = date
   colourBall()
@@ -25,8 +28,6 @@ function clear() {
 }
 
 function button(startEnd) {
-  let end = document.getElementById("enddate");
-  let start = document.getElementById("startdate")
   colourBall()
 }
 
@@ -52,6 +53,28 @@ function wc_hex_is_light(color) {
   return brightness > 155;
 }
 
+async function info(name, number){
+  const gone = await fetch("/api/gone")
+  const json = await gone.json()
+
+  console.log(name + " " + number)
+  for (let i = 0; i < json.length; i++) {
+    let start = new Date(json[i].StartDate)
+    start = start.getDate()
+    let end = new Date(json[i].EndDate)
+    end = end.getDate()
+
+    if (json[i].Name == name && start <= number && end >= number ){
+      document.getElementById("Name").innerHTML = json[i].Name
+      document.getElementById("Start-Date").innerHTML = json[i].StartDate.substr(0,10)
+      document.getElementById("End-Date").innerHTML = json[i].EndDate.substr(0,10)
+      document.getElementById("Reason").innerHTML = json[i].Reason
+      document.getElementById("Display").classList.remove("hidden")
+      document.getElementById("request").classList.add("hidden")
+    }
+  }
+}
+
 async function update(){
   const gone = await fetch("/api/gone")
   const json = await gone.json()
@@ -64,15 +87,18 @@ async function update(){
 
     console.log(start + " " + end)
     for(let l = start; l <= end; l++){
+      let bar;
       if (wc_hex_is_light(json[i].Colour)){
-        document.getElementById(l + "di").innerHTML = ("<button style=\" background-color: " + json[i].Colour + "; color: #000 \" >" + json[i].Name + "</button>" + document.getElementById(l + "di").innerHTML)
+        bar = "<button style=\" background-color: " + json[i].Colour + "; color: #000 \"  onclick=\"info('" + json[i].Name + "', " + l + ")\" > "
+        
       }else{
-        document.getElementById(l + "di").innerHTML = ("<button style=\" background-color: " + json[i].Colour + "; color: #ddd \" >" + json[i].Name + "</button>" + document.getElementById(l + "di").innerHTML)
+        bar = "<button style=\" background-color: " + json[i].Colour + "; color: #ddd \"  onclick=\"info('" + json[i].Name + "', " + l + ")\" > "
       }
-      console.log(document.getElementById(l + "di").innerHTML)
+      document.getElementById(l + "di").innerHTML =
+        ( bar + json[i].Name + "</button>" + document.getElementById(l + "di").innerHTML)
     }
   }
-}
+} 
 
 open()
 update()
