@@ -18,11 +18,11 @@ app.get("/", async (req, res) =>{
 app.post("/submit", async (req, res) =>{
     console.log(req.body)
     prisma.$connect
-
     const startDate = new Date()
-    startDate.setFullYear(2024, 7, req.body.startdate);
+    startDate.setFullYear(2024, 8, req.body.startdate);
+
     const endDate = new Date()
-    endDate.setFullYear(2024, 7, req.body.enddate);
+    endDate.setFullYear(2024, 8, req.body.enddate);
 
     const mac = await prisma.users.upsert({
         update: {

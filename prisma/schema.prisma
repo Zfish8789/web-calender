@@ -9,21 +9,21 @@ datasource db {
 }
 
 model gone {
-  idGone        Int      @default(autoincrement())
-  StartDate     DateTime @db.Date
-  EndDate       DateTime @db.Date
-  Reason        String?  @db.Text
-  Colour        String?  @db.VarChar(9)
+  idGone    Int      @default(autoincrement())
+  StartDate DateTime @db.Date
+  EndDate   DateTime @db.Date
+  Reason    String?  @db.Text
+  Colour    String?  @db.VarChar(9)
 
-  Name          String  @db.VarChar(45)
-  users         users    @relation(fields: [Name], references: [Name], onDelete: NoAction, onUpdate: NoAction, map: "fk_Gone_Users")
+  Name      String   @db.VarChar(45)
+  users     users    @relation(fields: [Name], references: [Name], onDelete: NoAction, onUpdate: NoAction, map: "fk_Gone_Users")
 
   @@id([idGone, Name])
   @@index([Name], map: "fk_Gone_Users_idx")
 }
 
 model users {
-  Name     String @id @db.VarChar(45)
+  Name     String  @id @db.VarChar(45)
   Password String? @db.VarChar(45)
   gone     gone[]
 }
