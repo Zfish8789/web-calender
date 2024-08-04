@@ -1,9 +1,12 @@
 function open() {
   let out = document.getElementById("wrapper").innerHTML
+  for (let i = 29; i <=31; i++) {
+    out = out + '<button class="day nonday">' + (i) + "</button>"
+  }
   for (let i = 0; i < 31; i++) {
     out = out + '<div class="dayBox" id="' + (i + 1) + 'di" >' + '<button class="day" id="' + (i + 1) + '" onclick="submit(' + (i + 1) + ')" >' + (i + 1) + '</button>' + '</div>'
   }
-  for (let i = 1; i <= 7 - 31 % 7; i++) {
+  for (let i = 1; i <= 1; i++) {
     out = out + '<button class="day nonday">' + (i) + "</button>"
   }
   out = out + '</div>'

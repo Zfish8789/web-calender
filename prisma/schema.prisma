@@ -5,7 +5,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = "postgresql://web_calender_database_user:RWado4VY7azN5sIx5gf8XCyoqhvy90aU@dpg-cq26fijv2p9s73enhjeg-a.frankfurt-postgres.render.com/web_calender_database"
+  url      = "postgresql://web_db_aug_user:cPxddZP1fLQu6ozX8LkOU7iAIovgYGgi@dpg-cqnmgotds78s739dqj90-a.frankfurt-postgres.render.com/web_db_aug"
 }
 
 model gone {
