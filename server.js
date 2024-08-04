@@ -10,6 +10,9 @@ app.use(express.static(path.join(__dirname, "static")));
 
 app.use(helm())
 app.use(express.json())
+app.use(express.urlencoded())
+
+
 
 app.get("/", async (req, res) =>{
     res.send(await readFile("./index.html", "utf-8"))
