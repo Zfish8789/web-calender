@@ -1,18 +1,36 @@
-
+var NovDays = 30, DecDays = 31, JanDays = 31;
 
 function open() {
+  let month = document.getElementById("currentMonth").innerHTML
   let out = document.getElementById("wrapper").innerHTML
-  for (let i = 29; i <=31; i++) {
+  let predays, endpredays, days
+  switch(month){
+    case ("11"): predays = 28, endpredays = 31, days = 30; document.getElementById("Month").innerHTML = "11: November"; break;
+    case ("12"): predays = 25, endpredays = 30, days = 31; document.getElementById("Month").innerHTML = "12: December"; break;
+    case ("1"):  predays = 30, endpredays = 31, days = 31; document.getElementById("Month").innerHTML = "1: January"; break;
+  }
+  for (let i = predays; i <= endpredays; i++) {
     out = out + '<button class="day nonday">' + (i) + "</button>"
   }
-  for (let i = 0; i < 31; i++) {
-    out = out + '<div class="dayBox" id="' + (i + 1) + 'di" >' + '<button class="day" id="' + (i + 1) + '" onclick="submit(' + (i + 1) + ')" >' + (i + 1) + '</button>' + '</div>'
+  for (let i = 1; i <= days; i++) {
+    out = out + '<div class="dayBox" id="' + (i) + 'di" >' + '<button class="day" id="' + (i) + '" onclick="submit(' + (i) + ')" >' + (i) + '</button>' + '</div>'
   }
-  for (let i = 1; i <= 1; i++) {
+  for (let i = 1; i < (7 - (endpredays-predays + days) % 7) ; i++) {
     out = out + '<button class="day nonday">' + (i) + "</button>"
   }
   out = out + '</div>'
   document.getElementById("wrapper").innerHTML = out
+}
+
+function changeMonth(upDown){
+  let month = document.getElementById("currentMonth").innerHTML
+  const months = ["11", "12","1"]
+  if (upDown == "down" && months.indexOf(month) != 0){
+    document.getElementById("currentMonth").innerHTML = months[months.indexOf(month) - 1]
+  } else if (upDown == "up" && months.indexOf(month) != months.length -1) {
+    document.getElementById("currentMonth").innerHTML = months[months.indexOf(month) + 1]
+  }
+  reload()
 }
 
 function submit(date) {
@@ -27,7 +45,6 @@ function submit(date) {
 function clear() {
   let marked = document.getElementsByClassName("day")
   for (let l = 0; l < marked.length; l++) {
-    //console.log(marked[l].classList + " " + marked[l].id)
     marked[l].classList.remove("marked")
   }
 }
@@ -103,7 +120,11 @@ async function update(){
         ( bar + json[i].Name + "</button>" + document.getElementById(l + "di").innerHTML)
     }
   }
-} 
+}
 
-open()
-update()
+function reload(){
+  open()
+  update()
+}
+
+reload()

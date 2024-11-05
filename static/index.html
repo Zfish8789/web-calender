@@ -2,15 +2,15 @@
 <head>
   <title>Fire Blanket Web Calender: 1.0</title>
   <link rel="stylesheet" href="Stylesheet.css">
+  <p id="currentMonth" hidden>11</p>
 </head>
 <body>
   <div class="overbar">
-    <h1>
-    <select>
-      <option>August</option>
-      <option>September</option>
-    </select>
+    <h1 id="Month">
+    11: November
     </h1>
+    <button type="button" onclick="changeMonth(down)">\/</button>
+    <button type="button" onclick="changeMonth(up)">/\</button>
     <p>Please Mark the days you are unavailable</p>
   </div>
   <div class="box" id="wrapper">
@@ -31,8 +31,8 @@
         <input class="login" name="colour" type="color" id="password" value="#f80">
         <label class="label" for="startdate">Start Date</label>
         <label class="label" for="enddate">End Date</label>
-        <input class="number" name="startdate" type="number" onchange="button(1)" id="startdate" min=1 max=31 value=1>
-        <input class="number" name="enddate" type="number" onchange="button(2)" id="enddate" min=1 max=31 value=1>
+        <input class="number" name="startdate" type="number" onchange="colourBall()" id="startdate" min=1 max=31 value=1>
+        <input class="number" name="enddate" type="number" onchange="colourBall()" id="enddate" min=1 max=31 value=1>
         <label class="label" for="reason">Reason (Optional)</label>
       </div>
       <div class="fill">
