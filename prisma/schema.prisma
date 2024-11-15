@@ -4,8 +4,8 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = "postgresql://web_db_aug_user:cPxddZP1fLQu6ozX8LkOU7iAIovgYGgi@dpg-cqnmgotds78s739dqj90-a.frankfurt-postgres.render.com/web_db_aug"
+  provider = "mysql"
+  url      = "kmafkcsm__tjSAvFRs-98N9JzwbMulwKElLcLTfEBx@localhost"
 }
 
 model gone {
