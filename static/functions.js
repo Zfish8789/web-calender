@@ -56,10 +56,27 @@ function clearDay() {
 
 function colourBall() {
   clearMark()
-	let start = parseInt(document.getElementById("startdate").value)
-	let end = parseInt(document.getElementById("enddate").value)
-	console.log(start)
-	console.log(end)
+  let currentMonth = parseInt(document.getElementById("currentMonth").value)
+  let start = new Date(json[i].StartDate)
+  startDay = start.getDate()
+  startMonth = start.getMonth()
+  let end = new Date(json[i].EndDate)
+  endDay = end.getDate()
+  endMonth = end.getMonth()
+
+  if (currentMonth >= startMonth && currentMonth == endMonth) {
+    startDay = 1
+  } else if (currentMonth == startMonth && currentMonth <= endMonth) {
+    endDay = 31
+  } else if (currentMonth >= startMonth && currentMonth <= endMonth) {
+    startDay = 1
+    endDay = 31
+  } else if (currentMonth >= startMonth && currentMonth >= endMonth) {
+    return
+  } else if (currentMonth <= startMonth && currentMonth <= endMonth) {
+    return
+  }
+
   for (let i = start; i <= end; i++) {
     let doc = document.getElementById(i)
     console.log(doc.id)
@@ -82,12 +99,14 @@ async function info(name, number){
 
   console.log(name + " " + number)
   for (let i = 0; i < json.length; i++) {
+    let currentMonth = parseInt(document.getElementById("currentMonth").value)
     let start = new Date(json[i].StartDate)
-    start = start.getDate()
+    startDay = start.getDate()
+    startMonth = start.getMonth()
     let end = new Date(json[i].EndDate)
     end = end.getDate()
 
-    if (json[i].Name == name && start <= number && end >= number ){
+    if (json[i].Name == name && startDay <= number && endDay >= number ){
       document.getElementById("Name").innerHTML = json[i].Name
       document.getElementById("Start-Date").innerHTML = json[i].StartDate.substr(0,10)
       document.getElementById("End-Date").innerHTML = json[i].EndDate.substr(0,10)
@@ -105,9 +124,10 @@ async function update(){
   for (let i = 0; i < json.length; i++) {
     let start = new Date(json[i].StartDate)
     let end = new Date(json[i].EndDate)
-    let startDay = 0, endDay = 0;
 
     let month = document.getElementById("currentMonth").innerHTML
+
+    let startDay = 0, endDay = 0;
 
     console.log(start + " " + end)
  
