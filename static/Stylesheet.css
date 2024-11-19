@@ -79,3 +79,9 @@ body {
 .marked {
   background-color: var(--marked);
 }
+
+#currentMonth{
+  height: 0%;
+  width: 0%;
+  font-size: 0%;
+}

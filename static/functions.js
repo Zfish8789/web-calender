@@ -56,13 +56,14 @@ function clearDay() {
 
 function colourBall() {
   clearMark()
-  let currentMonth = parseInt(document.getElementById("currentMonth").value)
-  let start = new Date(json[i].StartDate)
+  let cmoth = document.getElementById("currentMonth").innerHTML
+  let currentMonth = parseInt(cmoth)+1
+  let start = new Date(document.getElementById("startdate").value)
   startDay = start.getDate()
-  startMonth = start.getMonth()
-  let end = new Date(json[i].EndDate)
+  startMonth = start.getMonth()+1
+  let end = new Date(document.getElementById("enddate").value)
   endDay = end.getDate()
-  endMonth = end.getMonth()
+  endMonth = end.getMonth()+1
 
   if (currentMonth >= startMonth && currentMonth == endMonth) {
     startDay = 1
@@ -77,9 +78,9 @@ function colourBall() {
     return
   }
 
-  for (let i = start; i <= end; i++) {
+  for (let i = startDay; i <= endDay; i++) {
     let doc = document.getElementById(i)
-    console.log(doc.id)
+    // console.log(doc.id + " " + startMonth + " " + cmoth + " " + currentMonth + " "+ endMonth)
     doc.className = doc.className + " marked"
   }
 }
@@ -125,34 +126,28 @@ async function update(){
     let start = new Date(json[i].StartDate)
     let end = new Date(json[i].EndDate)
 
-    let month = document.getElementById("currentMonth").innerHTML
+    let month = parseInt(document.getElementById("currentMonth").innerHTML)
 
-    let startDay = 0, endDay = 0;
+    let startDay = start.getDate, endDay = end.getDate;
 
     console.log(start + " " + end)
  
-    if (parseInt(month) == start.getMonth() && parseInt(month) == end.getMonth()){
-      startDay = start.getDate
-      endDay = start.getDate
-    }else if (parseInt(month) >= start.getMonth() && parseInt(month) == end.getMonth()) {
+    if (month >= start.getMonth() && month == end.getMonth()) {
       startDay = 1
-      endDay = end.getDate
-    }else if (parseInt(month) == start.getMonth() && parseInt(month) <= end.getMonth()) {
-      startDay = start.getDate
+    }else if (month == start.getMonth() && month <= end.getMonth()) {
       endDay = 31
-    } else if (parseInt(month) >= start.getMonth() && parseInt(month) <= end.getMonth()) {
+    } else if (month >= start.getMonth() && month <= end.getMonth()) {
       startDay = 1
       endDay = 31
-    } else if (parseInt(month) >= start.getMonth() && parseInt(month) >= end.getMonth()) {
-      startDay = 0
-      endDay = 0
-    } else if (parseInt(month) <= start.getMonth() && parseInt(month) <= end.getMonth()) {
-      startDay = 0
-      endDay = 0
+    } else if (month >= start.getMonth() && month >= end.getMonth()) {
+      break
+    } else if (month <= start.getMonth() && month <= end.getMonth()) {
+      break
     }
     
     for (let l = startDay; l <= endDay; l++){
       let bar;
+      console.log(l)
       if (wc_hex_is_light(json[i].Colour)){
         bar = "<button style=\" background-color: " + json[i].Colour + "; color: #000 \"  onclick=\"info('" + json[i].Name + "', " + l + ")\" >"
       }else{
