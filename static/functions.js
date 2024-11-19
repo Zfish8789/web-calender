@@ -56,7 +56,7 @@ function clearDay() {
 
 function colourBall() {
   clearMark()
-  let currentMonth = parseInt(document.getElementById("currentMonth").value)
+  let currentMonth = parseInt(document.getElementById("currentMonth").innerHTML)
   let start = new Date(json[i].StartDate)
   startDay = start.getDate()
   startMonth = start.getMonth()
