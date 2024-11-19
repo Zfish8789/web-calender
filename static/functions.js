@@ -59,6 +59,7 @@ function colourBall() {
   let cmoth = document.getElementById("currentMonth").innerHTML
   let currentMonth = parseInt(cmoth)+1
   let start = new Date(document.getElementById("startdate").value)
+
   startDay = start.getDate()
   startMonth = start.getMonth()+1
   let end = new Date(document.getElementById("enddate").value)
