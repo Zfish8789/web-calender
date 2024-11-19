@@ -4,17 +4,17 @@ function open() {
   clearDay()
   let month = document.getElementById("currentMonth").innerHTML
   let out = document.getElementById("wrapper").innerHTML
-  let predays, endpredays, days
+  let predays, endpredays, days, year
   switch(month){
-    case ("11"): predays = 28, endpredays = 31, days = 30; document.getElementById("Month").innerHTML = "11: November"; break;
-    case ("12"): predays = 25, endpredays = 30, days = 31; document.getElementById("Month").innerHTML = "12: December"; break;
-    case ("1"):  predays = 30, endpredays = 31, days = 31; document.getElementById("Month").innerHTML = "1: January"; break;
+    case ("11"): predays = 28, endpredays = 31, days = 30, year = 2024; document.getElementById("Month").innerHTML = "11: November"; break;
+    case ("12"): predays = 25, endpredays = 30, days = 31, year = 2024; document.getElementById("Month").innerHTML = "12: December"; break;
+    case ("1"): predays = 30, endpredays = 31, days = 31, year = 2025; document.getElementById("Month").innerHTML = "1: January"; break;
   }
   for (let i = predays; i <= endpredays; i++) {
     out = out + '<button class="day nonday">' + (i) + "</button>"
   }
   for (let i = 1; i <= days; i++) {
-    out = out + '<div class="dayBox" id="' + (i) + 'di" >' + '<button class="day" id="' + (i) + '" onclick="submit(' + (i) + ')" >' + (i) + '</button>' + '</div>'
+    out = out + '<div class="dayBox" id="' + (i) + 'di" >' + '<button class="day" id="' + (i) + '" onclick="submit(' + (i) + "-" + month + "-" + year + ')" >' + (i) + '</button>' + '</div>'
   }
   for (let i = 1; i < (7 - (endpredays-predays + days) % 7) ; i++) {
     out = out + '<button class="day nonday">' + (i) + "</button>"
