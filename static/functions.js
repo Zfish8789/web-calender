@@ -141,9 +141,9 @@ async function update(){
       startDay = 1
       endDay = 31
     } else if (month >= start.getMonth() && month >= end.getMonth()) {
-      break
+      continue
     } else if (month <= start.getMonth() && month <= end.getMonth()) {
-      break
+      continue
     }
     
     for (let l = startDay; l <= endDay; l++){
