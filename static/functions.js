@@ -106,12 +106,12 @@ async function info(name, number){
     startDay = start.getDate()
     startMonth = start.getMonth()
     let end = new Date(json[i].EndDate)
-    end = end.getDate()
+    endDay = end.getDate()
 
     if (json[i].Name == name && startDay <= number && endDay >= number ){
       document.getElementById("Name").innerHTML = json[i].Name
-      document.getElementById("Start-Date").innerHTML = json[i].StartDate.substr(0,10)
-      document.getElementById("End-Date").innerHTML = json[i].EndDate.substr(0,10)
+      document.getElementById("Start-Date").innerHTML = json[i].StartDate
+      document.getElementById("End-Date").innerHTML = json[i].EndDate
       document.getElementById("Reason").innerHTML = json[i].Reason
       document.getElementById("Display").classList.remove("hidden")
       document.getElementById("request").classList.add("hidden")
