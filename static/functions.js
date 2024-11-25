@@ -141,11 +141,14 @@ async function update(){
       startDay = 1
       endDay = 31
     } else if (month >= start.getMonth() && month >= end.getMonth()) {
+      console.log("Pre")
       continue
     } else if (month <= start.getMonth() && month <= end.getMonth()) {
+      console.log("Post")
       continue
     }
     
+    console.log(startDay + " " + endDay)
     for (let l = startDay; l <= endDay; l++){
       let bar;
       console.log(l)
