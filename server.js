@@ -21,7 +21,7 @@ app.post("/submit", async (req, res) =>{
     const startDate = new Date(req.body.startdate)
     // startDate.setFullYear(2024, req.body.startmonth, req.body.startday);
 
-    const endDate = new Date(req.body.endDate)
+    const endDate = new Date(req.body.enddate)
     // endDate.setFullYear(2024, req.body.endmonth, req.body.endday);
 
     const mac = await prisma.users.upsert({
