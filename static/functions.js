@@ -81,7 +81,7 @@ function colourBall() {
 
   for (let i = startDay; i <= endDay; i++) {
     let doc = document.getElementById(i)
-    // console.log(doc.id + " " + startMonth + " " + cmoth + " " + currentMonth + " "+ endMonth)
+    console.log(doc.id + " " + startMonth + " " + cmoth + " " + currentMonth + " "+ endMonth)
     doc.className = doc.className + " marked"
   }
 }
@@ -128,22 +128,27 @@ async function update(){
     let end = new Date(json[i].EndDate)
 
     let month = parseInt(document.getElementById("currentMonth").innerHTML)
+    let year = (month == 0) ? 2024 : 2025
 
     let startDay = start.getDate(), endDay = end.getDate();
 
     console.log(start.getMonth() + " " + month + " " + end.getMonth())
  
-    if (month >= start.getMonth() && month == end.getMonth()) {
+    if (month >= start.getMonth() && month == end.getMonth() && (year >= start.getFullYear() && year == end.getFullYear())) {
       startDay = 1
-    }else if (month == start.getMonth() && month <= end.getMonth()) {
+    }else if (month == start.getMonth() && month <= end.getMonth()
+       && (year == start.getFullYear()) && (year <= end.getFullYear())) {
       endDay = 31
-    } else if (month >= start.getMonth() && month <= end.getMonth()) {
+    } else if (month >= start.getMonth() && month <= end.getMonth()
+      && (year >= start.getFullYear()) && (year <= end.getFullYear())) {
       startDay = 1
       endDay = 31
-    } else if (month >= start.getMonth() && month >= end.getMonth()) {
+    } else if (month >= start.getMonth() && month >= end.getMonth()
+      && (year >= start.getFullYear()) && (year >= end.getFullYear())) {
       console.log("Pre")
       continue
-    } else if (month <= start.getMonth() && month <= end.getMonth()) {
+    } else if ((month <= start.getMonth() && month <= end.getMonth())
+       && (year <= start.getFullYear()) && (year <= end.getFullYear())) {
       console.log("Post")
       continue
     }
@@ -152,7 +157,7 @@ async function update(){
 
     for (let l = startDay; l <= endDay; l++){
       let bar;
-      console.log(l)
+      // console.log(l)
       if (wc_hex_is_light(json[i].Colour)){
         bar = "<button style=\" background-color: " + json[i].Colour + "; color: #000 \"  onclick=\"info('" + json[i].Name + "', " + l + ")\" >"
       }else{
