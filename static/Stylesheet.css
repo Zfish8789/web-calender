@@ -12,7 +12,7 @@
 body {
   padding: 20px;
   font-family: Tahoma, Verdana, sans-serif;
-  background-color: var(--background);
+  /* background-color: var(--background); */
   background-image: url('Xmas-background.jpg');
 }
 
