@@ -129,7 +129,7 @@ async function update(){
 
     let month = parseInt(document.getElementById("currentMonth").innerHTML)
 
-    let startDay = start.getDate, endDay = end.getDate;
+    let startDay = start.getDate(), endDay = end.getDate();
 
     console.log(start.getMonth() + " " + month + " " + end.getMonth())
  
@@ -148,7 +148,8 @@ async function update(){
       continue
     }
     
-    console.log(startDay + " " + endDay)
+    console.log(startDay + "- || -" + endDay)
+
     for (let l = startDay; l <= endDay; l++){
       let bar;
       console.log(l)
