@@ -134,9 +134,9 @@ async function update(){
     let sCurrent = new Date(year, month).getTime(), eCurrent = new Date(year, month+1, -1).getTime();
     let startT = start.getTime(), endT = end.getTime();
 
-    console.log("Start: "+ start.toString() + " Current" + new Date(year, month).toString() + " End: " + end.toString())
+    console.log("Start: "+ start.getTime() + " Current" + new Date(year, month).getTime() + " End: " + end.getTime())
  
-    if (startT < sCurrent && endT< sCurrent) {
+    if (startT < sCurrent && endT < sCurrent) {
       console.log("Pre")
       continue
     } else if (startT > eCurrent && endT> eCurrent) {
