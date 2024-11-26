@@ -131,22 +131,23 @@ async function update(){
     let year = (month == 0) ? 2024 : 2025
 
     let startDay = start.getDate(), endDay = end.getDate();
-    let sCurrent = new Date(year, month), eCurrent = new Date(year, month, -1);
+    let sCurrent = new Date(year, month).getTime(), eCurrent = new Date(year, month+1, -1).getTime;
+    let startT = start.getTime(), endT = end.getTime();
 
-    console.log("StartMonth: "+ start.getMonth() + " IntMonth" + month + " EndMonth: " + end.getMonth())
+    console.log("Start: "+ start.toISOString() + " Current" + month + " " + year + " End: " + end.toISOString())
  
-    if (start < sCurrent && end < sCurrent) {
+    if (startT < sCurrent && endT< sCurrent) {
       console.log("Pre")
       continue
-    } else if (start > eCurrent && end > eCurrent) {
+    } else if (startT > eCurrent && endT> eCurrent) {
       console.log("Post")
       continue
-    }else if (start < sCurrent && end > eCurrent) {
+    }else if (startT < sCurrent && endT> eCurrent) {
       startDay = 1
       endDay = 31
-    }else if (sCurrent < start) {
-      startDay = 1
-    }else if(end > eCurrent) {
+    }else if (sCurrent < startT) {
+      startTDay = 1
+    }else if(endT> eCurrent) {
       endDay = 31
     } 
     
