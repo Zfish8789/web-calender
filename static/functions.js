@@ -6,9 +6,9 @@ function open() {
   let out = document.getElementById("wrapper").innerHTML
   let predays, endpredays, days, year
   switch(month){
-    case ("11"): predays = 28, endpredays = 31, days = 30, year = 2024; document.getElementById("Month").innerHTML = "11: November"; break;
-    case ("12"): predays = 25, endpredays = 30, days = 31, year = 2024; document.getElementById("Month").innerHTML = "12: December"; break;
-    case ("1"): predays = 30, endpredays = 31, days = 31, year = 2025; document.getElementById("Month").innerHTML = "1: January"; break;
+    case ("10"): predays = 28, endpredays = 31, days = 30, year = 2024; document.getElementById("Month").innerHTML = "11: November"; break;
+    case ("11"): predays = 25, endpredays = 30, days = 31, year = 2024; document.getElementById("Month").innerHTML = "12: December"; break;
+    case ("0"): predays = 30, endpredays = 31, days = 31, year = 2025; document.getElementById("Month").innerHTML = "1: January"; break;
   }
   for (let i = predays; i <= endpredays; i++) {
     out = out + '<button class="day nonday">' + (i) + "</button>"
@@ -25,7 +25,7 @@ function open() {
 
 function changeMonth(upDown){
   let month = document.getElementById("currentMonth").innerHTML
-  const months = ["11", "12","1"]
+  const months = ["10", "11","0"]
   if (upDown == "down" && months.indexOf(month) != 0){
     document.getElementById("currentMonth").innerHTML = months[months.indexOf(month) - 1]
   } else if (upDown == "up" && months.indexOf(month) != months.length -1) {
@@ -57,14 +57,14 @@ function clearDay() {
 function colourBall() {
   clearMark()
   let cmoth = document.getElementById("currentMonth").innerHTML
-  let currentMonth = parseInt(cmoth)+1
+  let currentMonth = parseInt(cmoth)
   let start = new Date(document.getElementById("startdate").value)
 
   startDay = start.getDate()
-  startMonth = start.getMonth()+1
+  startMonth = start.getMonth()
   let end = new Date(document.getElementById("enddate").value)
   endDay = end.getDate()
-  endMonth = end.getMonth()+1
+  endMonth = end.getMonth()
 
   if (currentMonth >= startMonth && currentMonth == endMonth) {
     startDay = 1
