@@ -60,7 +60,6 @@ function markDays() {
   let cmoth = document.getElementById("currentMonth").innerHTML
   let currentMonth = parseInt(cmoth)
   let start = new Date(document.getElementById("startdate").value)
-
   startDay = start.getDate()
   startMonth = start.getMonth()
   let end = new Date(document.getElementById("enddate").value)
@@ -123,7 +122,7 @@ async function info(name, number){
 async function update(){
   const gone = await fetch("/api/gone")
   const json = await gone.json()
-  console.log("Console" + json)
+  console.log(json)
   for (let i = 0; i < json.length; i++) {
     let start = new Date(json[i].StartDate)
     let end = new Date(json[i].EndDate)
@@ -132,27 +131,24 @@ async function update(){
     let year = (month == 0) ? 2024 : 2025
 
     let startDay = start.getDate(), endDay = end.getDate();
+    let sCurrent = new Date(year, month), eCurrent = new Date(year, month, -1);
 
     console.log("StartMonth: "+ start.getMonth() + " IntMonth" + month + " EndMonth: " + end.getMonth())
  
-    if (month >= start.getMonth() && month == end.getMonth() && (year >= start.getFullYear() && year == end.getFullYear())) {
-      startDay = 1
-    }else if (month == start.getMonth() && month <= end.getMonth()
-       && (year == start.getFullYear()) && (year <= end.getFullYear())) {
-      endDay = 31
-    } else if (month >= start.getMonth() && month <= end.getMonth()
-      && (year >= start.getFullYear()) && (year <= end.getFullYear())) {
-      startDay = 1
-      endDay = 31
-    } else if (month >= start.getMonth() && month >= end.getMonth()
-      && (year >= start.getFullYear()) && (year >= end.getFullYear())) {
+    if (start < sCurrent && end < sCurrent) {
       console.log("Pre")
       continue
-    } else if ((month <= start.getMonth() && month <= end.getMonth())
-       && (year <= start.getFullYear()) && (year <= end.getFullYear())) {
+    } else if (start > eCurrent && end > eCurrent) {
       console.log("Post")
       continue
-    }
+    }else if (start < sCurrent && end > eCurrent) {
+      startDay = 1
+      endDay = 31
+    }else if (sCurrent < start) {
+      startDay = 1
+    }else if(end > eCurrent) {
+      endDay = 31
+    } 
     
     console.log("SDay: "+ startDay + "- || - EDay: " + endDay)
 
