@@ -40,7 +40,7 @@ function submit(date) {
   document.getElementById("request").classList.remove("hidden")
   document.getElementById("startdate").value = date
   document.getElementById("enddate").value = date
-  colourBall()
+  markDays()
 }
 
 function clearMark() {
@@ -54,7 +54,8 @@ function clearDay() {
   let out = document.getElementById("wrapper").innerHTML = '<div class="header">Monday</div>' + '<div class="header">Tuesday</div>' + '<div class="header">Wednesday</div>' + '<div class="header">Thursday</div>' + '<div class="header">Friday</div>' + '<div class="header">Saturday</div>' + '<div class="header">Sunday</div>'
 }
 
-function colourBall() {
+function markDays() {
+  console.log("MarkDays")
   clearMark()
   let cmoth = document.getElementById("currentMonth").innerHTML
   let currentMonth = parseInt(cmoth)
@@ -81,7 +82,7 @@ function colourBall() {
 
   for (let i = startDay; i <= endDay; i++) {
     let doc = document.getElementById(i)
-    console.log(doc.id + " " + startMonth + " " + cmoth + " " + currentMonth + " "+ endMonth)
+    console.log("DayID: "+doc.id + " SDay: " + startDay + " EDay: "+ endDay)
     doc.className = doc.className + " marked"
   }
 }
@@ -122,7 +123,7 @@ async function info(name, number){
 async function update(){
   const gone = await fetch("/api/gone")
   const json = await gone.json()
-  console.log(json)
+  console.log("Console" + json)
   for (let i = 0; i < json.length; i++) {
     let start = new Date(json[i].StartDate)
     let end = new Date(json[i].EndDate)
@@ -132,7 +133,7 @@ async function update(){
 
     let startDay = start.getDate(), endDay = end.getDate();
 
-    console.log(start.getMonth() + " " + month + " " + end.getMonth())
+    console.log("StartMonth: "+ start.getMonth() + " IntMonth" + month + " EndMonth: " + end.getMonth())
  
     if (month >= start.getMonth() && month == end.getMonth() && (year >= start.getFullYear() && year == end.getFullYear())) {
       startDay = 1
@@ -153,7 +154,7 @@ async function update(){
       continue
     }
     
-    console.log(startDay + "- || -" + endDay)
+    console.log("SDay: "+ startDay + "- || - EDay: " + endDay)
 
     for (let l = startDay; l <= endDay; l++){
       let bar;
