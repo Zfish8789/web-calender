@@ -131,7 +131,7 @@ async function update(){
 
     let startDay = start.getDate, endDay = end.getDate;
 
-    console.log(start + " " + end)
+    console.log(start.getMonth() + " " + month + " " + end.getMonth())
  
     if (month >= start.getMonth() && month == end.getMonth()) {
       startDay = 1
