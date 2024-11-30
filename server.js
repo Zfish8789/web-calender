@@ -24,32 +24,42 @@ app.post("/submit", async (req, res) =>{
     const endDate = new Date(req.body.enddate)
     // endDate.setFullYear(2024, req.body.endmonth, req.body.endday);
 
-    const mac = await prisma.users.upsert({
-        update: {
-            gone: {
-                create: {
-                    StartDate: startDate,
-                    EndDate: endDate,
-                    Reason: req.body.reason,
-                    Colour: req.body.colour
-                }
+    if(req.body.type == "delete"){
+        const del = await prisma.users.delete({
+            where: {
+                idGone: req.body.idGone
             }
-        },
-        create:{
-            Name: req.body.name,
-            gone: {
-                create: {
-                    StartDate: startDate,
-                    EndDate: endDate,
-                    Reason: req.body.reason,
-                    Colour: req.body.colour
+        })
+    }else if(req.body.type == "input"){
+        const mac = await prisma.users.upsert({
+            update: {
+                gone: {
+                    create: {
+                        StartDate: startDate,
+                        EndDate: endDate,
+                        Reason: req.body.reason,
+                        Colour: req.body.colour
+                    }
                 }
+            },
+            create:{
+                Name: req.body.name,
+                gone: {
+                    create: {
+                        StartDate: startDate,
+                        EndDate: endDate,
+                        Reason: req.body.reason,
+                        Colour: req.body.colour
+                    }
+                }
+            },
+            where: {
+                Name: req.body.name
             }
-        },
-        where: {
-            Name: req.body.name
-        }
-    })
+        })
+    }
+
+    
 
     res.redirect("/")
     prisma.$disconnect
