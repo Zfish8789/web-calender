@@ -116,7 +116,7 @@ async function info(name, number){
       document.getElementById("Name").innerHTML = json[i].Name
       document.getElementById("Start-Date").innerHTML = json[i].StartDate
       document.getElementById("End-Date").innerHTML = json[i].EndDate
-      document.getElementById("id").innerHTML = json[i].idGone;
+      document.getElementById("idGone").innerHTML = json[i].idGone;
       document.getElementById("Reason").innerHTML = json[i].Reason
       document.getElementById("Display").classList.remove("hidden")
       document.getElementById("request").classList.add("hidden")
