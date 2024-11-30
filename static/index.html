@@ -35,13 +35,14 @@
         <input class="number" name="startdate" type="date" onchange="markDays()" id="startdate" min=2024-11-01 max=2025-01-31 value=2024-11-01>
         <input class="number" name="enddate" type="date" onchange="markDays()" id="enddate" min=2024-11-01 max=2025-01-31 value=2024-11-01>
         <label class="label" for="reason">Reason (Optional)</label>
+        <input type="hidden" name="type" value="input">
       </div>
       <div class="fill">
         <textarea class="reason" name="reason" id="reason"></textarea>
       </div>
       <input type="submit" value="Submit">
     </form>
-    <div id="Display" class="grid hidden">
+    <form id="Display" class="grid hidden">
       <h3>Name: </h3>
       <p id="Name">Text Here</p>
       <h3>Start Date:</h3>
@@ -50,7 +51,11 @@
       <p id="End-Date">Text Here</p>
       <h3>Reason:</h3>
       <p id="Reason">Text Here</p>
-    </div>
+      <input name="startdate" type="hidden">
+      <input name="enddate" type="hidden">
+      <input type="hidden" name="type" value="delete">
+      <input type="submit" value="Delete">
+    </form>
   </div>
   <p>Background by <a href="www.freepik.com">Freepik</a></p>
   <script src="functions.js"></script>

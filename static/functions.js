@@ -14,7 +14,8 @@ function open() {
     out = out + '<button class="day nonday">' + (i) + "</button>"
   }
   for (let i = 1; i <= days; i++) {
-    out = out + '<div class="dayBox" id="' + (i) + 'di" >' + '<button class="day" id="' + (i) + '" onclick="submit(' + (i) + "-" + month + "-" + year + ')" >' + (i) + '</button>' + '</div>'
+    out = out + '<div class="dayBox" id="' + (i) + 'di" >' + '<button class="day" id="' +
+     (i) + '" onclick="submit(' + (i) + "-" + month + "-" + year + ')" >' + (i) + '</button>' + '</div>'
   }
   for (let i = 1; i < (7 - (endpredays-predays + days) % 7) ; i++) {
     out = out + '<button class="day nonday">' + (i) + "</button>"
@@ -51,7 +52,10 @@ function clearMark() {
 }
 
 function clearDay() {
-  let out = document.getElementById("wrapper").innerHTML = '<div class="header">Monday</div>' + '<div class="header">Tuesday</div>' + '<div class="header">Wednesday</div>' + '<div class="header">Thursday</div>' + '<div class="header">Friday</div>' + '<div class="header">Saturday</div>' + '<div class="header">Sunday</div>'
+  let out = document.getElementById("wrapper").innerHTML = '<div class="header">Monday</div>' +
+    '<div class="header">Tuesday</div>' + '<div class="header">Wednesday</div>' +
+    '<div class="header">Thursday</div>' + '<div class="header">Friday</div>' +
+    '<div class="header">Saturday</div>' + '<div class="header">Sunday</div>'
 }
 
 function markDays() {
@@ -108,10 +112,12 @@ async function info(name, number){
     let end = new Date(json[i].EndDate)
     endDay = end.getDate()
 
-    if (json[i].Name == name && startDay <= number && endDay >= number ){
+    if (json[i].Name == name && startDay <= number && endDay >= number){
       document.getElementById("Name").innerHTML = json[i].Name
       document.getElementById("Start-Date").innerHTML = json[i].StartDate
+      document.getElementById("startdate").innerHTML = json[i].StartDate
       document.getElementById("End-Date").innerHTML = json[i].EndDate
+      document.getElementById("enddate").innerHTML = json[i].EndDate
       document.getElementById("Reason").innerHTML = json[i].Reason
       document.getElementById("Display").classList.remove("hidden")
       document.getElementById("request").classList.add("hidden")
