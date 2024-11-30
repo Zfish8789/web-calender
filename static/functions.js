@@ -128,7 +128,7 @@ async function update(){
     let end = new Date(json[i].EndDate)
 
     let month = parseInt(document.getElementById("currentMonth").innerHTML)
-    let year = (month == 0) ? 2024 : 2025
+    let year = (month == 0) ? 2025 : 2024
 
     let startDay = start.getDate(), endDay = end.getDate();
     let sCurrent = new Date(year, month, 1).getTime(), eCurrent = new Date(year, month+1, -1).getTime();
