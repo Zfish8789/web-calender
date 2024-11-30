@@ -70,16 +70,16 @@ function markDays() {
   endDay = end.getDate()
   endMonth = end.getMonth()
 
-  if (currentMonth >= startMonth && currentMonth == endMonth) {
+  if (startMonth  <  currentMonth && currentMonth == endMonth) {
     startDay = 1
-  } else if (currentMonth == startMonth && currentMonth <= endMonth) {
+  } else if ( startMonth == currentMonth  && currentMonth < endMonth) {
     endDay = 31
-  } else if (currentMonth >= startMonth && currentMonth <= endMonth) {
+  } else if (startMonth  <  currentMonth && currentMonth < endMonth) {
     startDay = 1
     endDay = 31
-  } else if (currentMonth >= startMonth && currentMonth >= endMonth) {
+  } else if (startMonth  >  currentMonth && currentMonth > endMonth) {
     return
-  } else if (currentMonth <= startMonth && currentMonth <= endMonth) {
+  } else if (startMonth  <  currentMonth && currentMonth < endMonth) {
     return
   }
 
