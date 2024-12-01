@@ -25,7 +25,7 @@ app.post("/submit", async (req, res) =>{
     // endDate.setFullYear(2024, req.body.endmonth, req.body.endday);
 
     if(req.body.type == "delete"){
-        const del = await prisma.users.delete({
+        const del = await prisma.gone.delete({
             where: {
                 idGone: req.body.idGone
             }
