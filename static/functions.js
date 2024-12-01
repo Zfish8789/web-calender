@@ -63,6 +63,8 @@ function markDays() {
   clearMark()
   let cmoth = document.getElementById("currentMonth").innerHTML
   let currentMonth = parseInt(cmoth)
+  let maxDay = (currentMonth== 10) ? 30 : 31
+
   let start = new Date(document.getElementById("startdate").value)
   startDay = start.getDate()
   startMonth = start.getMonth()
@@ -73,10 +75,10 @@ function markDays() {
   if (startMonth  <  currentMonth && currentMonth == endMonth) {
     startDay = 1
   } else if ( startMonth == currentMonth  && currentMonth < endMonth) {
-    endDay = 31
+    endDay = maxDay
   } else if (startMonth  <  currentMonth && currentMonth < endMonth) {
     startDay = 1
-    endDay = 31
+    endDay = maxDay
   } else if (startMonth  >  currentMonth && currentMonth > endMonth) {
     return
   } else if (startMonth  <  currentMonth && currentMonth < endMonth) {
