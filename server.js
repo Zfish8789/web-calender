@@ -30,7 +30,9 @@ app.post("/submit", async (req, res) =>{
                 idGone: parseInt(req.body.idGone),
                 Name: req.body.name,
                 StartDate : startDate,
-                EndDate: endDate
+                EndDate: endDate,
+                Colour: req.body.colour,
+                Reason: req.body.reason
             }
         })
     }else if(req.body.type == "input"){
