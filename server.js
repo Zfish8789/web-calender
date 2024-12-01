@@ -31,6 +31,8 @@ app.post("/submit", async (req, res) =>{
             }
         })
     }else if(req.body.type == "input"){
+        console.log("input")
+        console.log(req.body)
         const mac = await prisma.users.upsert({
             update: {
                 gone: {
