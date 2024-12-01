@@ -135,6 +135,8 @@ async function update(){
     let end = new Date(json[i].EndDate)
 
     let month = parseInt(document.getElementById("currentMonth").innerHTML)
+
+    let maxDay = (month== 10) ? 30 : 31
     let year = (month == 0) ? 2025 : 2024
 
     let startDay = start.getDate(), endDay = end.getDate();
@@ -151,11 +153,11 @@ async function update(){
       continue
     }else if (startT < sCurrent && endT> eCurrent) {
       startDay = 1
-      endDay = 31
+      endDay = maxDay
     }else if (sCurrent < startT) {
       startTDay = 1
     }else if(endT> eCurrent) {
-      endDay = 31
+      endDay = maxDay
     } 
     
     console.log("SDay: "+ startDay + "- || - EDay: " + endDay)
