@@ -117,9 +117,11 @@ async function info(name, number){
     if (json[i].Name == name && startDay <= number && endDay >= number){
       document.getElementById("Name").innerHTML = json[i].Name
       document.getElementById("Start-Date").innerHTML = json[i].StartDate
+      document.getElementById("startdate").value = json[i].StartDate
       document.getElementById("End-Date").innerHTML = json[i].EndDate
+      document.getElementById("enddate").value = json[i].EndDate
+      document.getElementById("name").value = json[i].Name
       document.getElementById("idGone").value = json[i].idGone
-      console.log("ID Gone: ", json[i].idGone)
       document.getElementById("Reason").innerHTML = json[i].Reason
       document.getElementById("Display").classList.remove("hidden")
       document.getElementById("request").classList.add("hidden")

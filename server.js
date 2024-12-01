@@ -27,7 +27,10 @@ app.post("/submit", async (req, res) =>{
     if(req.body.type == "delete"){
         const del = await prisma.gone.delete({
             where: {
-                idGone: parseInt(req.body.idGone)
+                idGone: parseInt(req.body.idGone),
+                Name: req.body.name,
+                StartDate : startDate,
+                EndDate: endDate
             }
         })
     }else if(req.body.type == "input"){
